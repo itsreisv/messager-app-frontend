@@ -27,6 +27,7 @@ label {
   display: flex;
   flex-direction: column;
   margin: 5px;
+  margin-bottom: 1rem;
 }
 
 .log-in-button {
@@ -42,4 +43,8 @@ label {
   justify-content: center;
   align-items: center;
   margin: 10px;
+}
+
+.title-header {
+  margin-bottom: 4rem;
 }

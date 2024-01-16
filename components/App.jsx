@@ -4,6 +4,7 @@ import '../styles/App.css'
 import SignUp from './sign-up'
 import Header from './Header'
 import LogIn from './log-in'
+import AuthComponent from './Auth'
 
 function App() {
 
@@ -20,8 +21,7 @@ function App() {
 
   return (
     <div className='page-container'>
-      <Header setCurrentPage={setCurrentPage}/>
-      {renderPage()}
+      <AuthComponent />
     </div>
 
 

@@ -1,1 +1,0 @@
-name idea: Blink Chat, use eye as logo
