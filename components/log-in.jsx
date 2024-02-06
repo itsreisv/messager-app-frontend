@@ -2,24 +2,20 @@ import { useState } from "react";
 import '../styles/log-in.css'
 import axios from "axios";
 
-function LogIn() {
+function LogIn({username, password, loginUser, setPassword, setUsername}) {
   return (
     <div className="log-in-container">
-      <h1 className="title-header">Log-In</h1>
-      <form className="log-in-form">
-        <div>
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <div>
-          <button type="button" className="log-in-button">Log-In</button>
-        </div>
-      </form>
-    </div>
+    <h1>Login or Register</h1>
+    <form className="log-in-form">
+    <label htmlFor="username">Username:</label>
+    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+    <br />
+    <label htmlFor="password">Password:</label>
+    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    <br />
+    <button type="button" onClick={loginUser} className="log-in-button">Login</button>
+    </form>
+  </div>
   )
 }
 

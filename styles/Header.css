@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content:space-between;
-  width: 100%;
+  width: 100vw;
   height: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -43,4 +43,8 @@ a {
 
 .header-button:hover {
   border-bottom: 1px white solid;
+}
+
+.internal-links {
+  margin-right: 20rem;
 }

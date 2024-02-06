@@ -1,7 +1,15 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import Profile from '../components/Profile'
+import '../styles/log-in.css'
+import Header from "./Header";
+import LogIn from "./log-in";
+import Users from "./Users";
+import SignUp from "./sign-up";
+import { render } from "react-dom";
 
 const AuthComponent = () => {
+  const [currentPage, setCurrentPage] = useState('log-in');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +40,8 @@ const AuthComponent = () => {
       })
       console.log(response.data.message);
       setIsLoggedIn(true)
+      setCurrentPage('profile')
+      setUsername(username)
     } catch (error) {
       console.error('Error logging in:', error.response.data.error)
     }
@@ -46,30 +56,34 @@ const AuthComponent = () => {
 
       console.log(response.data.message);
       setIsLoggedIn(false);
+      setCurrentPage('log-in')
+      setUsername('')
     } catch (error) {
       console.error('Error logging out:', error.response.data.error);
     }
   };
 
+  const renderPage = () => {
+    if (currentPage === 'sign-up') {
+      return <SignUp />
+    } else if (currentPage === 'log-in') {
+      return <LogIn username={username} password={password} loginUser={loginUser} setPassword={setPassword} setUsername={setUsername} />
+    } else if (currentPage === 'profile') {
+      return <Profile logoutUser={logoutUser} username={username} />
+    }
+  }
+
   return (
     <div>
       {isLoggedIn ? (
-        <div>
-          <h1>Welcome, {username}!</h1>
-          <button onClick={logoutUser}>Logout</button>
+        <div className="some-container">
+          <Header setCurrentPage={setCurrentPage} isLoggedIn={isLoggedIn} logoutUser={logoutUser}/>
+          {renderPage()}
         </div>
       ): (
-        <div>
-          <h1>Login or Register</h1>
-          <form>
-          <label htmlFor="username">Username:</label>
-          <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          <br />
-          <label htmlFor="password">Password:</label>
-          <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <br />
-          <button type="button" onClick={loginUser}>Login</button>
-          </form>
+        <div className="some-container">
+          <Header setCurrentPage={setCurrentPage} isLoggedIn={isLoggedIn} />
+          {renderPage()}
         </div>
       )}
       </div>

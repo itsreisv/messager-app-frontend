@@ -1,0 +1,33 @@
+.user-list {
+  width: 100%;
+  padding: 1rem;
+}
+
+.user-box {
+  margin: 1rem;
+  border: solid black 1px;
+  padding: 1rem;
+  width: 25%;
+}
+
+.user-box:hover {
+  background-color: lightgray;
+}
+
+.user-box:active {
+  background-color: darkgray;
+}
+
+p {
+  margin: 0;
+}
+
+.conf-button {
+  background: lightgray;
+  border: none;
+  margin-top: 5px;
+}
+
+.conf-button:hover {
+  background-color: white;
+}

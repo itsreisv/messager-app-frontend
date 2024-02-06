@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import '../styles/App.css'
 import SignUp from './sign-up'
 import Header from './Header'
 import LogIn from './log-in'
 import AuthComponent from './Auth'
+import Users from './Users'
 
 function App() {
 
@@ -14,14 +14,17 @@ function App() {
     if (currentPage === 'sign-up') {
       return <SignUp />
     } else if (currentPage === 'log-in') {
-      return <LogIn />
+      return <AuthComponent />
+    } else if (currentPage === 'user-list') {
+      return <Users />
     }
   }
 
 
   return (
     <div className='page-container'>
-      <AuthComponent />
+      <Header setCurrentPage={setCurrentPage}/>
+      {renderPage()}
     </div>
 
 
